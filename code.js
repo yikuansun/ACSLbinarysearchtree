@@ -76,11 +76,24 @@ class tTree {
     }
 }
 
-let x = new tTree("p");
-x.addLetter("r");
-x.addLetter("o");
-x.addLetter("g");
-x.addLetter("r");
-x.addLetter("a");
-x.addLetter("m");
-x.render();
+document.querySelector("button").addEventListener("click", function() {
+    let word = document.querySelector("input[type=text]").value;
+    let x = new tTree(word[0]);
+    for (let i = 1; i < word.length; i++) {
+        x.addLetter(word[i]);
+    }
+    document.querySelector("#treeContainer").innerHTML = "";
+    document.querySelector("#treeContainer").appendChild(x.render());
+    document.querySelector("#ipldisp").innerText = x.internalPathLength;
+});
+
+document.querySelector("input[type=text]").addEventListener("input", function() {
+    let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let output = "";
+    for (let i = 0; i < this.value.length; i++) {
+        if (alphabet.includes(this.value[i].toUpperCase())) output += this.value[i];
+    }
+    this.value = output;
+});
+
+document.querySelector("button").click();
