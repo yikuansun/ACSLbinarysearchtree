@@ -53,6 +53,7 @@ class tTree {
         let renderNode = function(n) {
             let table = document.createElement("table");
             table.style.textAlign = "center";
+            table.style.borderCollapse = "collapse";
             let r1 = document.createElement("tr");
             let topNodeRendered = document.createElement("td");
             topNodeRendered.setAttribute("colspan", 2);
@@ -61,10 +62,14 @@ class tTree {
             table.appendChild(r1);
             let r2 = document.createElement("tr");
             let child0Rendered = document.createElement("td");
+            child0Rendered.style.borderTop = "1px solid lightgrey";
+            child0Rendered.style.borderRight = "1px solid lightgrey";
             child0Rendered.style.verticalAlign = "top";
             if (n.children[0]) child0Rendered.appendChild(renderNode(n.children[0]));
             r2.appendChild(child0Rendered);
             let child1Rendered = document.createElement("td");
+            child1Rendered.style.borderTop = "1px solid lightgrey";
+            child1Rendered.style.borderLeft = "1px solid lightgrey";
             child1Rendered.style.verticalAlign = "top";
             if (n.children[1]) child1Rendered.appendChild(renderNode(n.children[1]));
             r2.appendChild(child1Rendered);
